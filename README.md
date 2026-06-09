@@ -11,7 +11,7 @@
 
 ## Why
 
-Security scanners produce **findings**. Boards and APRA want **narrative evidence** — "demonstrate, mapped to CPS 234 ¶35, that information assets are encrypted, with evidence and a remediation plan." That translation is the biggest time-sink in an APRA review.
+Security scanners produce **findings**. Boards and APRA want **narrative evidence** — "demonstrate, mapped to CPS 234 ¶21, that information assets are encrypted, with evidence and a remediation plan." That translation is the biggest time-sink in an APRA review.
 
 `assure` closes the gap: **findings → CPS 234/230 paragraph mapping → board-ready narrative report.** It runs entirely in your environment — your AWS credentials, your Bedrock, nothing leaves your account.
 
