@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Keep pinned GitHub Actions SHAs current via reviewed PRs (not silent tag moves).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
