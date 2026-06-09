@@ -15,6 +15,8 @@ Security scanners produce **findings**. Boards and APRA want **narrative evidenc
 
 `assure` closes the gap: **findings → CPS 234/230 paragraph mapping → board-ready narrative report.** It runs entirely in your environment — your AWS credentials, your Bedrock, nothing leaves your account.
 
+📖 Write-up: [Assure — an open-source CLI for APRA compliance reports on AWS](https://aiopsone.com/blog/assure-apra-compliance-cli)
+
 > Built on **Prowler**, **Powerpipe**, **Cloud Custodian** and **AWS Config** — the best open-source scanners. `assure` does the part they don't: turning their findings into APRA-paragraph board evidence.
 
 ## Install
