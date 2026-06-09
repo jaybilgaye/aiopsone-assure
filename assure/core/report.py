@@ -41,7 +41,7 @@ def build_markdown(framework, control_results, ctx, narrate):
     if s["fails"]:
         L.append("**Priority controls not met:**")
         for r in s["fails"]:
-            L.append(f"- ¶{r.control.paragraph} — {r.control.name} ({len(r.fails)} finding(s))")
+            L.append(f"- Para {r.control.paragraph} — {r.control.name} ({len(r.fails)} finding(s))")
         L.append("")
 
     # group by section, preserving order
@@ -56,7 +56,7 @@ def build_markdown(framework, control_results, ctx, narrate):
         for r in rows:
             c = r.control
             L.append("")
-            L.append(f"#### {ICON.get(r.status,'•')} ¶{c.paragraph} — {c.name}  · {LABEL.get(r.status, r.status)}")
+            L.append(f"#### {ICON.get(r.status,'•')} Para {c.paragraph} — {c.name}  · {LABEL.get(r.status, r.status)}")
             L.append("")
             L.append(narrate(r))
             if r.fails:
@@ -74,7 +74,7 @@ def build_markdown(framework, control_results, ctx, narrate):
         L.append("")
         L.append("## Remediation roadmap")
         for i, r in enumerate(s["fails"], 1):
-            L.append(f"{i}. **¶{r.control.paragraph} {r.control.name}** — {r.control.remediation}")
+            L.append(f"{i}. **Para {r.control.paragraph} {r.control.name}** — {r.control.remediation}")
 
     L.append("")
     L.append("---")
@@ -178,7 +178,7 @@ def build_html(framework, control_results, ctx, narrate):
             c = r.control
             P.append(f"<div class='ctrl s-{r.status}'>")
             P.append(f"<span class='chip c-{r.status}'>{LABEL.get(r.status, r.status)}</span>")
-            P.append(f"<div class='ttl'>¶{_inline(c.paragraph)} — {_inline(c.name)}</div>")
+            P.append(f"<div class='ttl'>Para {_inline(c.paragraph)} — {_inline(c.name)}</div>")
             P.append(f"<div class='narr'>{_inline(narrate(r))}</div>")
             if r.fails:
                 P.append("<div class='evid'><b>Evidence</b><br>")
@@ -195,7 +195,7 @@ def build_html(framework, control_results, ctx, narrate):
     if s["fails"]:
         P.append("<h2>Remediation roadmap</h2><ol class='road'>")
         for r in s["fails"]:
-            P.append(f"<li><strong>¶{_inline(r.control.paragraph)} {_inline(r.control.name)}</strong> — "
+            P.append(f"<li><strong>Para {_inline(r.control.paragraph)} {_inline(r.control.name)}</strong> — "
                      f"{_inline(r.control.remediation)}</li>")
         P.append("</ol>")
 
