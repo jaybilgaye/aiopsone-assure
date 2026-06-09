@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiopsone-assure"
+version = "0.1.0"
+description = "APRA CPS 234 / CPS 230 AWS compliance evidence from your terminal — security findings to a board-ready narrative report."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Jayprakash Bilgaye" }]
+keywords = [
+  "apra", "cps-234", "cps-230", "aws", "compliance", "prowler",
+  "cloud-security", "bedrock", "audit", "governance", "australia",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.optional-dependencies]
+ai = ["boto3>=1.34.0"]
+scan = ["prowler>=5.0.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+assure = "assure.cli:main"
+
+[project.urls]
+Homepage = "https://aiopsone.com"
+Repository = "https://github.com/jaybilgaye/aiopsone-assure"
+Issues = "https://github.com/jaybilgaye/aiopsone-assure/issues"
+
+[tool.setuptools]
+packages = ["assure", "assure.core"]
+
+[tool.setuptools.package-data]
+assure = ["data/frameworks/*.json"]

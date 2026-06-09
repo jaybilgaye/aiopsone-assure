@@ -1,0 +1,11 @@
+ASSESSMENT_START_TIME;CHECK_ID;STATUS;STATUS_EXTENDED;RESOURCE_UID;ACCOUNT_UID;REGION;MUTED
+2026-06-08 01:00:00;iam_user_administrator_access_policy;FAIL;User jay-cli has AdministratorAccess attached;arn:aws:iam::460589075034:user/jay-cli;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;iam_root_mfa_enabled;FAIL;Root account does not have MFA enabled;arn:aws:iam::460589075034:root;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;accessanalyzer_enabled;FAIL;IAM Access Analyzer is not enabled;arn:aws:accessanalyzer:ap-southeast-2:460589075034:analyzer/none;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;cloudtrail_multi_region_enabled;PASS;Multi-region trail is enabled;arn:aws:cloudtrail:ap-southeast-2:460589075034:trail/main;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;cloudtrail_log_file_validation_enabled;PASS;Log file validation enabled;arn:aws:cloudtrail:ap-southeast-2:460589075034:trail/main;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;backup_vaults_exist;FAIL;No Backup Vault exist;arn:aws:backup:ap-southeast-2:460589075034:backup-vault;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;iam_user_mfa_enabled_console_access;PASS;User alice has MFA enabled;arn:aws:iam::460589075034:user/alice;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;iam_user_mfa_enabled_console_access;FAIL;User bob does not have MFA;arn:aws:iam::460589075034:user/bob;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;unknown_check_not_in_framework;FAIL;This check is not mapped and must be ignored;arn:aws:thing::460589075034:x;460589075034;ap-southeast-2;False
+2026-06-08 01:00:00;cloudtrail_kms_encryption_enabled;FAIL;Trail not KMS encrypted (suppressed);arn:aws:cloudtrail:ap-southeast-2:460589075034:trail/old;460589075034;ap-southeast-2;True

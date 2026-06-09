@@ -1,0 +1,5 @@
+[
+  {"check_id": "iam_user_administrator_access_policy", "status": "FAIL", "detail": "User jay-cli has AdministratorAccess", "resource": "arn:aws:iam::460589075034:user/jay-cli", "account": "460589075034", "region": "ap-southeast-2"},
+  {"check_id": "cloudtrail_multi_region_enabled", "status": "PASS", "detail": "Multi-region trail enabled", "resource": "trail/main", "account": "460589075034", "region": "ap-southeast-2"},
+  {"check_id": "accessanalyzer_enabled", "status": "FAIL", "detail": "Access Analyzer not enabled", "resource": "analyzer/none", "account": "460589075034", "region": "ap-southeast-2"}
+]

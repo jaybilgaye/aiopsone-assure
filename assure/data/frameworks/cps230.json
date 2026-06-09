@@ -1,0 +1,407 @@
+{
+  "Framework": "APRA-CPS-230",
+  "Name": "APRA CPS 230 Operational Risk Management",
+  "Provider": "AWS",
+  "Version": "2026",
+  "Description": "Prudential Standard CPS 230 (Operational Risk Management) maps APRA's operational-risk, business-continuity and service-provider requirements to AWS controls verifiable with Prowler. CPS 230 is largely governance/process; only the IT-capability, monitoring and business-continuity (backup/DR/resilience) requirements are observable from AWS APIs and are marked Automated. Paragraph references follow the official standard (July 2026, commences 1 July 2026). Governance and process obligations are marked Manual.",
+  "Requirements": [
+    {
+      "Id": "cps230-11-key-principles",
+      "Description": "An APRA-regulated entity must effectively manage its operational risks, maintain critical operations within tolerance levels through severe disruptions, and manage the risks associated with the use of service providers.",
+      "Name": "Key principles",
+      "Attributes": [
+        {
+          "Section": "Key principles",
+          "ItemId": "11",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Overarching operational-risk, continuity and service-provider principles (paragraphs 11-14).",
+          "RationaleStatement": "Sets the obligations the rest of the standard implements.",
+          "ImpactStatement": "Failure here is a failure of the operational-risk posture as a whole.",
+          "RemediationProcedure": "Establish an operational-risk management approach appropriate to the entity's size, business mix and complexity.",
+          "AuditProcedure": "Review the operational-risk management approach and its board endorsement.",
+          "AdditionalInformation": "CPS 230 paragraphs 11-14. Governance principle; not observable from AWS APIs.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-15-risk-management-framework",
+      "Description": "As part of its CPS 220 risk management framework, the entity must develop and maintain governance, an operational risk profile with tolerance levels, effective internal controls, monitoring/escalation, BCPs and service-provider management processes.",
+      "Name": "Risk management framework",
+      "Attributes": [
+        {
+          "Section": "Risk management framework",
+          "ItemId": "15",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Operational risk embedded in the CPS 220 risk management framework (paragraphs 15-18).",
+          "RationaleStatement": "Operational risk must be integrated into the entity's overall risk framework, not run in isolation.",
+          "ImpactStatement": "Siloed operational-risk management misses cross-cutting exposures.",
+          "RemediationProcedure": "Document governance, risk profile, controls, monitoring, BCPs and service-provider processes within the risk management framework; review per CPS 220.",
+          "AuditProcedure": "Review the risk management framework and the operational-risk review evidence.",
+          "AdditionalInformation": "CPS 230 paragraphs 15-18. Governance requirement.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-19-roles-responsibilities",
+      "Description": "The Board is ultimately accountable for operational risk management, including business continuity and service-provider management; it must set clear roles for senior managers and approve the BCP, tolerance levels and service-provider management policy.",
+      "Name": "Roles and responsibilities",
+      "Attributes": [
+        {
+          "Section": "Roles and responsibilities",
+          "ItemId": "19",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Board accountability and senior-manager roles for operational risk, BCP and service providers (paragraphs 19-22).",
+          "RationaleStatement": "Accountability for operational resilience must rest with the Board.",
+          "ImpactStatement": "Undefined ownership leaves resilience decisions without an accountable owner.",
+          "RemediationProcedure": "Define and document Board and senior-manager responsibilities; Board to approve BCP, tolerance levels and SP management policy.",
+          "AuditProcedure": "Review board charters, approvals of BCP/tolerances/SP policy, and the RACI.",
+          "AdditionalInformation": "CPS 230 paragraphs 19-22. Governance requirement.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-23-operational-risk-management",
+      "Description": "The entity must manage the full range of operational risks (legal, regulatory, compliance, conduct, technology, data and change-management risk), with senior management responsible end-to-end.",
+      "Name": "Operational risk management",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "23",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "End-to-end management of the full range of operational risks (paragraph 23).",
+          "RationaleStatement": "Operational risk is inherent in all products, activities, processes and systems.",
+          "ImpactStatement": "Unmanaged operational-risk categories accumulate into resilience failures.",
+          "RemediationProcedure": "Assign senior-management ownership across all operational-risk categories for all business operations.",
+          "AuditProcedure": "Review the operational-risk taxonomy and ownership assignments.",
+          "AdditionalInformation": "CPS 230 paragraph 23. Governance/process.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-24-it-capability",
+      "Description": "The entity must maintain appropriate and sound information and IT capability to support its critical operations, monitor the age and health of its information assets, and meet the information security requirements in CPS 234.",
+      "Name": "IT capability and information-asset health",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "24",
+          "AssessmentStatus": "Automated",
+          "CloudApplicability": "partial",
+          "Description": "Continuous vulnerability assessment (Inspector v2) and managed-instance coverage (SSM) evidence sound, monitored IT capability.",
+          "RationaleStatement": "Aged or unpatched information assets are the most common technology-risk driver; continuous scanning evidences the monitoring CPS 230 ¶24 requires.",
+          "ImpactStatement": "Unmonitored, unpatched assets degrade IT capability and threaten critical operations.",
+          "RemediationProcedure": "Enable Inspector v2 and ensure EC2 instances are SSM-managed for full scan/patch coverage; remediate findings. Meet CPS 234 (see the apra_cps_234_aws framework).",
+          "AuditProcedure": "Confirm Inspector v2 enabled and instances SSM-managed; cross-reference the CPS 234 result.",
+          "AdditionalInformation": "CPS 230 paragraph 24 (cross-references CPS 234). Information-security controls themselves are assessed by apra_cps_234_aws. AWS services: Inspector, SSM.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": [
+        "inspector2_is_enabled",
+        "ec2_instance_managed_by_ssm"
+      ]
+    },
+    {
+      "Id": "cps230-25-oprisk-profile-assessment",
+      "Description": "The entity must assess the operational-risk impact of business/strategic decisions, maintain a comprehensive operational-risk profile with information systems to monitor risk, and undertake scenario analysis of severe events.",
+      "Name": "Operational risk profile and assessment",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "25",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Operational-risk profile, scenario analysis and critical-operation/dependency mapping (paragraphs 25-27).",
+          "RationaleStatement": "Resilience requires knowing the processes, resources and dependencies behind critical operations.",
+          "ImpactStatement": "Without a mapped profile, controls and continuity plans miss real dependencies.",
+          "RemediationProcedure": "Maintain the operational-risk profile, dependency mapping and scenario analysis; review on material change.",
+          "AuditProcedure": "Review the risk profile, dependency register and scenario-analysis outputs.",
+          "AdditionalInformation": "CPS 230 paragraphs 25-27. Largely procedural.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-26-monitoring-systems",
+      "Description": "The entity must maintain appropriate and effective information systems to monitor operational risk, compile and analyse operational-risk data, and facilitate reporting.",
+      "Name": "Information systems for operational-risk monitoring",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "26",
+          "AssessmentStatus": "Automated",
+          "CloudApplicability": "partial",
+          "Description": "Configuration recording and a multi-region audit trail provide the data backbone for monitoring operational risk on AWS.",
+          "RationaleStatement": "You cannot monitor or report on operational risk in AWS without complete configuration and activity data.",
+          "ImpactStatement": "Without Config and CloudTrail, operational-risk events on AWS go unrecorded and unanalysable.",
+          "RemediationProcedure": "Enable AWS Config recorder in all regions and a multi-region CloudTrail; feed both into operational-risk monitoring and reporting.",
+          "AuditProcedure": "Confirm Config recorder and multi-region CloudTrail are enabled.",
+          "AdditionalInformation": "CPS 230 paragraph 26(a). AWS services: Config, CloudTrail. The broader operational-risk MIS is procedural.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": [
+        "config_recorder_all_regions_enabled",
+        "cloudtrail_multi_region_enabled"
+      ]
+    },
+    {
+      "Id": "cps230-28-operational-risk-controls",
+      "Description": "The entity must design, implement and embed internal controls to mitigate operational risks in line with its risk appetite, and remediate material weaknesses.",
+      "Name": "Operational risk controls (design and remediation)",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "28",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "partial",
+          "Description": "Designing, embedding and remediating operational-risk controls (paragraphs 28, 30). Effectiveness monitoring is covered by cps230-29.",
+          "RationaleStatement": "Controls must be designed to appetite and weaknesses remediated at root cause.",
+          "ImpactStatement": "Undesigned or unremediated controls leave operational risk unmitigated.",
+          "RemediationProcedure": "Design controls to risk appetite; track and remediate control gaps in the operational-risk profile until closed.",
+          "AuditProcedure": "Review control design documentation and the remediation register.",
+          "AdditionalInformation": "CPS 230 paragraphs 28 & 30. Design/remediation is procedural; continuous control monitoring is partly automatable (cps230-29).",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-29-control-monitoring",
+      "Description": "The entity must regularly monitor, review and test controls for design and operating effectiveness, with frequency commensurate with risk materiality.",
+      "Name": "Control effectiveness monitoring",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "29",
+          "AssessmentStatus": "Automated",
+          "CloudApplicability": "partial",
+          "Description": "GuardDuty and Security Hub provide continuous, automated monitoring of control posture and effectiveness on AWS.",
+          "RationaleStatement": "Continuous detective controls evidence the ongoing control-effectiveness monitoring CPS 230 ¶29 requires.",
+          "ImpactStatement": "Without continuous monitoring, control degradation is found only in periodic manual review.",
+          "RemediationProcedure": "Enable GuardDuty and Security Hub across all in-use regions; route findings into control-effectiveness reporting.",
+          "AuditProcedure": "Confirm GuardDuty and Security Hub are enabled; review finding-to-remediation flow.",
+          "AdditionalInformation": "CPS 230 paragraph 29. AWS services: GuardDuty, Security Hub. The formal testing program is procedural.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": [
+        "guardduty_is_enabled",
+        "securityhub_enabled"
+      ]
+    },
+    {
+      "Id": "cps230-31-operational-risk-incidents",
+      "Description": "The entity must identify, escalate, record and address operational-risk incidents and near misses in a timely manner.",
+      "Name": "Operational risk incidents",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "31",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Incident and near-miss identification, escalation and recording (paragraph 31).",
+          "RationaleStatement": "Incidents must feed the risk profile and control-effectiveness assessment.",
+          "ImpactStatement": "Unrecorded incidents hide systemic control weaknesses.",
+          "RemediationProcedure": "Operate an incident/near-miss process with escalation and a register; feed outcomes into the risk profile.",
+          "AuditProcedure": "Review the incident register and escalation evidence.",
+          "AdditionalInformation": "CPS 230 paragraph 31. Process obligation; AWS detective controls (cps230-29) support detection.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-32-apra-notification-incident",
+      "Description": "The entity must notify APRA as soon as possible and no later than 72 hours after becoming aware of an operational-risk incident likely to have a material financial impact or a material impact on its ability to maintain critical operations.",
+      "Name": "APRA notification - operational risk incident (72 hours)",
+      "Attributes": [
+        {
+          "Section": "Operational risk management",
+          "ItemId": "32",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "72-hour APRA notification of material operational-risk incidents (paragraph 32).",
+          "RationaleStatement": "Prudential supervision depends on timely notification of material operational-risk incidents.",
+          "ImpactStatement": "Failure to notify within 72 hours is a breach independent of the incident.",
+          "RemediationProcedure": "Maintain a notification process with materiality thresholds and the 72-hour timeline. (A CPS 234 information-security notification does not need separate CPS 230 reporting.)",
+          "AuditProcedure": "Review the notification procedure and evidence of past notifications.",
+          "AdditionalInformation": "CPS 230 paragraph 32. Process obligation.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-33-bcp-resilience",
+      "Description": "The entity must maintain a credible BCP that maintains critical operations within tolerance levels through disruptions, including disaster recovery planning for critical information assets.",
+      "Name": "Business continuity - backup and disaster recovery",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "33",
+          "AssessmentStatus": "Automated",
+          "CloudApplicability": "partial",
+          "Description": "Backup and recovery coverage for critical data stores evidences the DR capability a credible BCP requires.",
+          "RationaleStatement": "Recoverability of critical information assets is the technical foundation of business continuity within tolerance levels.",
+          "ImpactStatement": "Without tested backups/DR, a disruption to a critical data store may exceed tolerance or be unrecoverable.",
+          "RemediationProcedure": "Create AWS Backup plans and vaults; protect RDS, DynamoDB, EBS and EFS with backup plans; enable S3 versioning for critical buckets; test restores.",
+          "AuditProcedure": "Confirm backup plans/vaults exist and key data stores are covered; verify restore testing (manual).",
+          "AdditionalInformation": "CPS 230 paragraph 33(c) (DR for critical information assets). AWS service: AWS Backup. Tolerance levels and BCP testing are procedural.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": [
+        "backup_plans_exist",
+        "backup_vaults_exist",
+        "rds_instance_backup_enabled",
+        "dynamodb_table_protected_by_backup_plan",
+        "ec2_ebs_volume_protected_by_backup_plan",
+        "efs_have_backup_enabled",
+        "s3_bucket_object_versioning"
+      ]
+    },
+    {
+      "Id": "cps230-34-critical-operations-tolerance",
+      "Description": "The entity must define and register its critical operations and establish tolerance levels (maximum disruption time, maximum data loss, minimum service levels).",
+      "Name": "Critical operations and tolerance levels",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "34",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Critical-operations register and tolerance levels (paragraphs 34-38).",
+          "RationaleStatement": "Continuity is meaningless without defined critical operations and the tolerances they must stay within.",
+          "ImpactStatement": "Undefined tolerances make it impossible to know when a disruption is a breach.",
+          "RemediationProcedure": "Define and register critical operations; set tolerance levels for max disruption time, max data loss and minimum service levels.",
+          "AuditProcedure": "Review the critical-operations register and documented tolerance levels.",
+          "AdditionalInformation": "CPS 230 paragraphs 34-38. Procedural; AWS RPO/RTO design (multi-AZ, backups) supports the tolerances (see cps230-37).",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-37-tolerance-resilience-controls",
+      "Description": "For each critical operation the entity must establish tolerance levels including maximum data loss and minimum service levels; AWS resilience controls support meeting these.",
+      "Name": "Resilience controls supporting tolerance levels",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "37",
+          "AssessmentStatus": "Automated",
+          "CloudApplicability": "partial",
+          "Description": "Multi-AZ and deletion-protection on critical databases support the RTO/RPO and minimum-service tolerance levels.",
+          "RationaleStatement": "Tolerance levels for disruption time and data loss are met in practice by resilient, recoverable infrastructure.",
+          "ImpactStatement": "Single-AZ, deletable critical databases cannot meet meaningful disruption/data-loss tolerances.",
+          "RemediationProcedure": "Enable Multi-AZ and deletion protection on critical RDS instances; align with documented tolerance levels.",
+          "AuditProcedure": "Confirm critical RDS instances are Multi-AZ with deletion protection; map to tolerance levels.",
+          "AdditionalInformation": "CPS 230 paragraph 37. AWS service: RDS. The tolerance levels themselves are defined manually (cps230-34).",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": [
+        "rds_instance_multi_az",
+        "rds_instance_deletion_protection"
+      ]
+    },
+    {
+      "Id": "cps230-39-business-continuity-plan",
+      "Description": "The BCP must include the critical-operations register and tolerances, activation triggers, actions to maintain operations, execution-risk assessment and a communications strategy; the entity must maintain the capabilities to execute it.",
+      "Name": "Business continuity plan",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "39",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "BCP contents and executable capability (paragraphs 39-40).",
+          "RationaleStatement": "A BCP must be concrete and executable, not a document.",
+          "ImpactStatement": "An incomplete or unexecutable BCP fails under real disruption.",
+          "RemediationProcedure": "Document the BCP per paragraph 39 and maintain the people/technology/resources to execute it.",
+          "AuditProcedure": "Review BCP contents against paragraph 39 and capability evidence.",
+          "AdditionalInformation": "CPS 230 paragraphs 39-40. Procedural; AWS DR controls (cps230-33/37) are inputs.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-41-apra-notification-disruption",
+      "Description": "The entity must notify APRA as soon as possible and no later than 24 hours after suffering a disruption to a critical operation outside tolerance.",
+      "Name": "APRA notification - disruption outside tolerance (24 hours)",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "41",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "24-hour APRA notification of a critical-operation disruption outside tolerance (paragraph 41).",
+          "RationaleStatement": "Disruptions beyond tolerance are prudentially significant and time-critical to report.",
+          "ImpactStatement": "Failure to notify within 24 hours is a breach.",
+          "RemediationProcedure": "Maintain a notification process tied to tolerance breaches, covering nature, action, impact and recovery timeframe.",
+          "AuditProcedure": "Review the notification procedure and any past notifications.",
+          "AdditionalInformation": "CPS 230 paragraph 41. Process obligation.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-42-bcp-testing-audit",
+      "Description": "The entity must have a systematic BCP testing program with an annual exercise across all critical operations using severe but plausible scenarios, update the BCP annually, and have internal audit periodically review it.",
+      "Name": "BCP testing, review and internal audit",
+      "Attributes": [
+        {
+          "Section": "Business continuity",
+          "ItemId": "42",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Systematic BCP testing, annual update, and internal-audit review (paragraphs 42-45).",
+          "RationaleStatement": "An untested BCP provides false assurance; independent review validates credibility.",
+          "ImpactStatement": "Untested or unreviewed plans fail when actually needed.",
+          "RemediationProcedure": "Run an annual BCP exercise with severe-but-plausible scenarios (including service-provider disruption); update the BCP annually; have internal audit review it.",
+          "AuditProcedure": "Review the testing program, exercise results, annual updates and internal-audit reports.",
+          "AdditionalInformation": "CPS 230 paragraphs 42-45. Procedural; AWS game-day/DR drills can form part of the exercise evidence.",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    },
+    {
+      "Id": "cps230-46-service-provider-management",
+      "Description": "The entity must maintain a service-provider management policy, a register of material service providers, formal agreements with required clauses (incl. APRA access), ongoing monitoring, and notify APRA of material/offshoring arrangements.",
+      "Name": "Management of service provider arrangements",
+      "Attributes": [
+        {
+          "Section": "Management of service provider arrangements",
+          "ItemId": "46",
+          "AssessmentStatus": "Manual",
+          "CloudApplicability": "non-applicable",
+          "Description": "Service-provider policy, material-SP register, agreements, monitoring and APRA notifications (paragraphs 46-61).",
+          "RationaleStatement": "AWS itself is a material service provider; reliance on it must be governed, not assumed. Outsourcing custody does not outsource the obligation.",
+          "ImpactStatement": "Ungoverned service-provider reliance is an unmanaged path to prudential failure.",
+          "RemediationProcedure": "Maintain the SP management policy and material-SP register (incl. AWS); ensure formal agreements with APRA-access, sub-contractor and termination clauses; monitor performance; notify APRA of material/offshoring arrangements (20 business days).",
+          "AuditProcedure": "Review the SP policy, material-SP register, AWS agreement clauses, monitoring reports and notification evidence.",
+          "AdditionalInformation": "CPS 230 paragraphs 46-61. Procedural/contractual; AWS is assessed as a material service provider (shared-responsibility, AWS Artifact, contractual terms).",
+          "References": "https://handbook.apra.gov.au/standard/cps-230"
+        }
+      ],
+      "Checks": []
+    }
+  ]
+}

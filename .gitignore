@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# assure outputs / scan artifacts (may contain real account data)
+assure-report.*
+*-report.pdf
+*-report.md
+output/
+.scan/
+
+# OS
+.DS_Store

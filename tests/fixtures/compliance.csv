@@ -1,0 +1,4 @@
+PROVIDER;ACCOUNTID;REGION;ASSESSMENTDATE;REQUIREMENTS_ID;STATUS;STATUSEXTENDED;RESOURCEID;CHECKID;MUTED;FRAMEWORK
+aws;123456789012;ap-southeast-2;2026-06-06 18:26:25;cps234-21-access-control;FAIL;IAM Access Analyzer is not enabled.;arn:aws:accessanalyzer:ap-southeast-2:123456789012:analyzer/unknown;accessanalyzer_enabled;False;APRA-CPS-234
+aws;123456789012;ap-southeast-2;2026-06-06 18:26:25;cps234-21-access-control;FAIL;User jay has AdministratorAccess.;arn:aws:iam::123456789012:user/jay;iam_user_administrator_access_policy;False;APRA-CPS-234
+aws;123456789012;ap-southeast-2;2026-06-06 18:26:25;cps234-21-encryption-rest;PASS;EBS default encryption enabled.;arn:aws:ec2:ap-southeast-2:123456789012:account;ec2_ebs_default_encryption;False;APRA-CPS-234

@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install (editable)
+        run: pip install -e .
+      - name: Run tests
+        run: python tests/test_assure.py
+      - name: Smoke-test the CLI (template engine, no AWS)
+        run: |
+          assure frameworks
+          assure report --in tests/fixtures/prowler_standard.csv --framework cps234 \
+            --format md -o /tmp/ci-report --exit-zero
+          test -f /tmp/ci-report.md
