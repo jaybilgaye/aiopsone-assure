@@ -3,4 +3,4 @@
 Turn AWS security findings (Prowler / Security Hub / AWS Config) into a
 board-ready, APRA-paragraph-mapped narrative compliance report (CPS 234 / CPS 230).
 """
-__version__ = "0.1.0"
+__version__ = "0.1.1"

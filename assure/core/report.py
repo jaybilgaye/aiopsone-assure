@@ -104,11 +104,14 @@ _CSS = """
 * { box-sizing: border-box; }
 body { font-family: -apple-system,'Segoe UI',Inter,Arial,sans-serif; color:#1f2328; font-size:11pt; line-height:1.5; margin:0; }
 .bar { height:8px; background:#A3E635; }
-.head { padding:18px 0 10px; border-bottom:2px solid #ECECEC; margin-bottom:18px; }
+.head { display:flex; justify-content:space-between; align-items:flex-start; gap:22px;
+  padding:18px 0 12px; border-bottom:2px solid #ECECEC; margin-bottom:18px; }
+.head-left { flex:1; min-width:0; }
 .brand { font-size:10pt; letter-spacing:.22em; text-transform:uppercase; color:#5a7d10; font-weight:800; }
-h1 { font-size:21pt; margin:6px 0 4px; letter-spacing:-.3px; }
-.meta { color:#6b7280; font-size:9.5pt; }
-.score { float:right; text-align:center; border:2px solid #A3E635; border-radius:12px; padding:8px 16px; margin-top:-58px; }
+h1 { font-size:21pt; margin:6px 0 8px; letter-spacing:-.3px; }
+.meta { color:#6b7280; font-size:9.5pt; line-height:1.55; }
+.meta b { color:#374151; }
+.score { flex:0 0 auto; text-align:center; border:2px solid #A3E635; border-radius:12px; padding:8px 16px; }
 .score b { display:block; font-size:24pt; line-height:1; color:#365314; }
 .score span { font-size:8pt; color:#6b7280; text-transform:uppercase; letter-spacing:.1em; }
 h2 { font-size:14pt; margin:22px 0 8px; padding-bottom:5px; border-bottom:2px solid #A3E635; }
@@ -141,12 +144,17 @@ def build_html(framework, control_results, ctx, narrate):
     P = []
     P.append("<!DOCTYPE html><html><head><meta charset='utf-8'><style>" + _CSS + "</style></head><body>")
     P.append("<div class='bar'></div>")
+    date = (ctx.get('date') or 'n/a').split('.')[0]  # trim microseconds
     P.append("<div class='head'>")
+    P.append("<div class='head-left'>")
     P.append("<div class='brand'>AiOpsOne · Assure</div>")
     P.append(f"<h1>{_inline(framework.name)}</h1>")
-    P.append(f"<div class='meta'>Account <b>{_inline(ctx.get('account') or 'n/a')}</b> · "
-             f"Region {_inline(ctx.get('region') or 'n/a')} · Assessed {_inline(ctx.get('date') or 'n/a')} · "
-             f"Engine {_inline(ctx.get('engine', 'template'))}</div>")
+    P.append("<div class='meta'>"
+             f"<div><b>Account</b> {_inline(ctx.get('account') or 'n/a')}</div>"
+             f"<div>Region {_inline(ctx.get('region') or 'n/a')} · "
+             f"Assessed {_inline(date)} · Engine {_inline(ctx.get('engine', 'template'))}</div>"
+             "</div>")
+    P.append("</div>")  # head-left
     P.append(f"<div class='score'><b>{s['score']}%</b><span>automated</span></div>")
     P.append("</div>")
 

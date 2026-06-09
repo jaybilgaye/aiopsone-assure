@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aiopsone-assure"
-version = "0.1.0"
+version = "0.1.1"
 description = "APRA CPS 234 / CPS 230 AWS compliance evidence from your terminal — security findings to a board-ready narrative report."
 readme = "README.md"
 requires-python = ">=3.9"
